@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PageContentViewController.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <UIPageViewControllerDataSource>
 
+- (IBAction)mainMenuButton:(id)sender;
+
+@property (nonatomic, strong) NSArray *pageTitles;
+@property (nonatomic, strong) NSArray *pageImages;
+@property (nonatomic, strong) UIPageViewController *pageViewController; // to hold UIPageVieController
 
 @end
 

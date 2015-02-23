@@ -15,6 +15,7 @@
 		B8C77BF01A9BCAF5007F86D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C77BEE1A9BCAF5007F86D1 /* LaunchScreen.xib */; };
 		B8C77BFC1A9BCAF5007F86D1 /* JamMatesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77BFB1A9BCAF5007F86D1 /* JamMatesTests.m */; };
 		B8C77C071A9BCB4E007F86D1 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77C061A9BCB4E007F86D1 /* ArrayDataSource.m */; };
+		B8C77C0A1A9BDA2B007F86D1 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77C091A9BDA2B007F86D1 /* PageContentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		B8C77BFB1A9BCAF5007F86D1 /* JamMatesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JamMatesTests.m; sourceTree = "<group>"; };
 		B8C77C051A9BCB4E007F86D1 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
 		B8C77C061A9BCB4E007F86D1 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
+		B8C77C081A9BDA2B007F86D1 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
+		B8C77C091A9BDA2B007F86D1 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 				B8C77C051A9BCB4E007F86D1 /* ArrayDataSource.h */,
 				B8C77C061A9BCB4E007F86D1 /* ArrayDataSource.m */,
 				B8C77BE91A9BCAF5007F86D1 /* Main.storyboard */,
+				B8C77C081A9BDA2B007F86D1 /* PageContentViewController.h */,
+				B8C77C091A9BDA2B007F86D1 /* PageContentViewController.m */,
 				B8C77BEC1A9BCAF5007F86D1 /* Images.xcassets */,
 				B8C77BEE1A9BCAF5007F86D1 /* LaunchScreen.xib */,
 				B8C77BDF1A9BCAF5007F86D1 /* Supporting Files */,
@@ -226,6 +231,7 @@
 			files = (
 				B8C77BE81A9BCAF5007F86D1 /* MainViewController.m in Sources */,
 				B8C77BE51A9BCAF5007F86D1 /* AppDelegate.m in Sources */,
+				B8C77C0A1A9BDA2B007F86D1 /* PageContentViewController.m in Sources */,
 				B8C77C071A9BCB4E007F86D1 /* ArrayDataSource.m in Sources */,
 				B8C77BE21A9BCAF5007F86D1 /* main.m in Sources */,
 			);

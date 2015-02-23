@@ -10,13 +10,18 @@
 
 @interface MainViewController ()
 
+- (IBAction)mainMenuButton:(id)sender;
+
 @end
 
 @implementation MainViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  // Do any additional setup after loading the view, typically from a nib.
+  
+  _pageTitles = @[@"Page1",@"Page2",@"Page3",@"Page4",@"Page5",@"Page6"];
+  _pageImages = @[@"Page1.png",@"Page2.png",@"Page3.png",@"Page4.png",@"Page5.png",@"Page6.png"]; 
+  
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,4 +29,83 @@
   // Dispose of any resources that can be recreated.
 }
 
+
+
+#pragma mark PageViewController DataSource
+
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+  
+  NSUInteger index = ((PageContentViewController *) viewController).pageIndex;
+  if ((index == 0) || index == NSNotFound) {
+    return nil;
+  }
+  index --;
+  return [self viewControllerAtIndex:index];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+  
+  NSUInteger index = ((PageContentViewController*) viewController).pageIndex;
+  if (index == NSNotFound) {
+    return nil;
+  }
+  
+  index++;
+  if (index == [self.pageTitles count]) {
+    return nil;
+  }
+  return [self viewControllerAtIndex:index];
+}
+
+
+
+
+
+
+
+
+- (IBAction)mainMenuButton:(id)sender {
+}
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///scroll
