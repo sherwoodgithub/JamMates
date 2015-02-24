@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="F9l-eO-ayt">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Page View Controller-->
@@ -15,7 +16,7 @@
         <!--PageContentViewController-->
         <scene sceneID="thk-Fr-i4R">
             <objects>
-                <viewController storyboardIdentifier="PageContentController" id="AZC-w0-TwZ" userLabel="PageContentViewController" customClass="PageContentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageContentViewController" id="AZC-w0-TwZ" userLabel="PageContentViewController" customClass="PageContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m8F-Bu-pA9"/>
                         <viewControllerLayoutGuide type="bottom" id="2ol-Np-QVV"/>
@@ -24,20 +25,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zy-x9-yWr">
-                                <rect key="frame" x="279" y="69" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zy-x9-yWr">
+                                <rect key="frame" x="203" y="69" width="277" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TXo-ed-baS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TXo-ed-baS">
                                 <rect key="frame" x="38" y="103" width="525" height="411"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="6Zy-x9-yWr" secondAttribute="centerX" id="5x9-ln-Gfl"/>
+                            <constraint firstItem="TXo-ed-baS" firstAttribute="centerX" secondItem="h9Q-X0-nh9" secondAttribute="centerX" id="9cg-pe-eB6"/>
+                            <constraint firstItem="TXo-ed-baS" firstAttribute="leading" secondItem="h9Q-X0-nh9" secondAttribute="leadingMargin" constant="8" id="Bf9-uR-yI9"/>
+                            <constraint firstAttribute="centerY" secondItem="TXo-ed-baS" secondAttribute="centerY" constant="-8.5" id="Fgw-RR-jcB"/>
+                            <constraint firstAttribute="centerX" secondItem="TXo-ed-baS" secondAttribute="centerX" id="JOV-8w-IXr"/>
+                            <constraint firstItem="TXo-ed-baS" firstAttribute="leading" secondItem="h9Q-X0-nh9" secondAttribute="leadingMargin" constant="22" id="KzG-U4-1ne"/>
+                            <constraint firstItem="TXo-ed-baS" firstAttribute="top" secondItem="6Zy-x9-yWr" secondAttribute="bottom" constant="13" id="bHm-qj-oEh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TXo-ed-baS" secondAttribute="trailing" constant="8" id="puK-FD-ROF"/>
+                            <constraint firstItem="2ol-Np-QVV" firstAttribute="top" secondItem="TXo-ed-baS" secondAttribute="bottom" constant="86" id="sBZ-1r-Hob"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Bf9-uR-yI9"/>
+                                <exclude reference="JOV-8w-IXr"/>
+                                <exclude reference="puK-FD-ROF"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="backgroundImage" destination="TXo-ed-baS" id="CTN-BL-WMf"/>
                         <outlet property="backgroundImageView" destination="TXo-ed-baS" id="j4v-hb-m5H"/>
                         <outlet property="titleLabel" destination="6Zy-x9-yWr" id="Bn6-5W-Nmu"/>
                     </connections>
@@ -70,9 +88,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="mainMenuButton" destination="U4q-bJ-JWK" id="OM3-5V-WEN"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OiS-Ho-MXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

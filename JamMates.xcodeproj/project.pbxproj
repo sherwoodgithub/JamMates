@@ -426,6 +426,7 @@
 				B8C77C011A9BCAF5007F86D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B8C77C021A9BCAF5007F86D1 /* Build configuration list for PBXNativeTarget "JamMatesTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +435,7 @@
 				B8C77C041A9BCAF5007F86D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
