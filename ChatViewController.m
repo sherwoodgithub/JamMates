@@ -1,24 +1,22 @@
 //
-//  PageContentViewController.m
+//  ChatViewController.m
 //  JamMates
 //
 //  Created by Stephen Sherwood on 2/23/15.
 //  Copyright (c) 2015 Stephen Sherwood. All rights reserved.
 //
 
-#import "PageContentViewController.h"
+#import "ChatViewController.h"
 
-@interface PageContentViewController ()
+@interface ChatViewController ()
 
 @end
 
-@implementation PageContentViewController
+@implementation ChatViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  self.backgroundImageView.image = [UIImage imageNamed:self.imageFile];
-  self.titleLabel.text = self.titleText;
-
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

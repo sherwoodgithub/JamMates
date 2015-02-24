@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8B5FC5F1A9C1F5200333381 /* Musician.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FC5E1A9C1F5200333381 /* Musician.m */; };
+		B8B5FC631A9C1F6E00333381 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FC621A9C1F6E00333381 /* User.m */; };
+		B8B5FC661A9C200C00333381 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FC651A9C200C00333381 /* FavoritesTableViewController.m */; };
+		B8B5FC691A9C202C00333381 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FC681A9C202C00333381 /* ProfileViewController.m */; };
+		B8B5FC6C1A9C204200333381 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FC6B1A9C204200333381 /* ChatViewController.m */; };
+		B8B5FC711A9D1FBE00333381 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FC701A9D1FBE00333381 /* NetworkController.m */; };
 		B8C77BE21A9BCAF5007F86D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77BE11A9BCAF5007F86D1 /* main.m */; };
 		B8C77BE51A9BCAF5007F86D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77BE41A9BCAF5007F86D1 /* AppDelegate.m */; };
-		B8C77BE81A9BCAF5007F86D1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77BE71A9BCAF5007F86D1 /* MainViewController.m */; };
+		B8C77BE81A9BCAF5007F86D1 /* MusicianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77BE71A9BCAF5007F86D1 /* MusicianViewController.m */; };
 		B8C77BEB1A9BCAF5007F86D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C77BE91A9BCAF5007F86D1 /* Main.storyboard */; };
 		B8C77BED1A9BCAF5007F86D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8C77BEC1A9BCAF5007F86D1 /* Images.xcassets */; };
 		B8C77BF01A9BCAF5007F86D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C77BEE1A9BCAF5007F86D1 /* LaunchScreen.xib */; };
 		B8C77BFC1A9BCAF5007F86D1 /* JamMatesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77BFB1A9BCAF5007F86D1 /* JamMatesTests.m */; };
 		B8C77C071A9BCB4E007F86D1 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77C061A9BCB4E007F86D1 /* ArrayDataSource.m */; };
-		B8C77C0A1A9BDA2B007F86D1 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77C091A9BDA2B007F86D1 /* PageContentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +34,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B8B5FC5D1A9C1F5200333381 /* Musician.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Musician.h; sourceTree = "<group>"; };
+		B8B5FC5E1A9C1F5200333381 /* Musician.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Musician.m; sourceTree = "<group>"; };
+		B8B5FC611A9C1F6E00333381 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		B8B5FC621A9C1F6E00333381 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		B8B5FC641A9C200C00333381 /* FavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewController.h; sourceTree = "<group>"; };
+		B8B5FC651A9C200C00333381 /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
+		B8B5FC671A9C202C00333381 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = ../ProfileViewController.h; sourceTree = "<group>"; };
+		B8B5FC681A9C202C00333381 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = ../ProfileViewController.m; sourceTree = "<group>"; };
+		B8B5FC6A1A9C204200333381 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatViewController.h; path = ../ChatViewController.h; sourceTree = "<group>"; };
+		B8B5FC6B1A9C204200333381 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatViewController.m; path = ../ChatViewController.m; sourceTree = "<group>"; };
+		B8B5FC6E1A9D1EBB00333381 /* NetworkCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkCommunicatorDelegate.h; path = ../NetworkCommunicatorDelegate.h; sourceTree = "<group>"; };
+		B8B5FC6F1A9D1FBE00333381 /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkController.h; path = ../NetworkController.h; sourceTree = "<group>"; };
+		B8B5FC701A9D1FBE00333381 /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkController.m; path = ../NetworkController.m; sourceTree = "<group>"; };
 		B8C77BDC1A9BCAF5007F86D1 /* JamMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C77BE01A9BCAF5007F86D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8C77BE11A9BCAF5007F86D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B8C77BE31A9BCAF5007F86D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B8C77BE41A9BCAF5007F86D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B8C77BE61A9BCAF5007F86D1 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		B8C77BE71A9BCAF5007F86D1 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		B8C77BE61A9BCAF5007F86D1 /* MusicianViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicianViewController.h; sourceTree = "<group>"; };
+		B8C77BE71A9BCAF5007F86D1 /* MusicianViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicianViewController.m; sourceTree = "<group>"; };
 		B8C77BEA1A9BCAF5007F86D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8C77BEC1A9BCAF5007F86D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B8C77BEF1A9BCAF5007F86D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -44,8 +62,6 @@
 		B8C77BFB1A9BCAF5007F86D1 /* JamMatesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JamMatesTests.m; sourceTree = "<group>"; };
 		B8C77C051A9BCB4E007F86D1 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
 		B8C77C061A9BCB4E007F86D1 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
-		B8C77C081A9BDA2B007F86D1 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
-		B8C77C091A9BDA2B007F86D1 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +82,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B8B5FC5C1A9C1F2C00333381 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				B8B5FC6A1A9C204200333381 /* ChatViewController.h */,
+				B8B5FC6B1A9C204200333381 /* ChatViewController.m */,
+				B8B5FC671A9C202C00333381 /* ProfileViewController.h */,
+				B8B5FC681A9C202C00333381 /* ProfileViewController.m */,
+				B8B5FC641A9C200C00333381 /* FavoritesTableViewController.h */,
+				B8B5FC651A9C200C00333381 /* FavoritesTableViewController.m */,
+				B8C77BE61A9BCAF5007F86D1 /* MusicianViewController.h */,
+				B8C77BE71A9BCAF5007F86D1 /* MusicianViewController.m */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		B8B5FC601A9C1F5D00333381 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B8B5FC5D1A9C1F5200333381 /* Musician.h */,
+				B8B5FC5E1A9C1F5200333381 /* Musician.m */,
+				B8B5FC611A9C1F6E00333381 /* User.h */,
+				B8B5FC621A9C1F6E00333381 /* User.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		B8C77BD31A9BCAF5007F86D1 = {
 			isa = PBXGroup;
 			children = (
@@ -87,15 +129,16 @@
 		B8C77BDE1A9BCAF5007F86D1 /* JamMates */ = {
 			isa = PBXGroup;
 			children = (
+				B8B5FC6E1A9D1EBB00333381 /* NetworkCommunicatorDelegate.h */,
+				B8B5FC6F1A9D1FBE00333381 /* NetworkController.h */,
+				B8B5FC701A9D1FBE00333381 /* NetworkController.m */,
 				B8C77BE31A9BCAF5007F86D1 /* AppDelegate.h */,
 				B8C77BE41A9BCAF5007F86D1 /* AppDelegate.m */,
-				B8C77BE61A9BCAF5007F86D1 /* MainViewController.h */,
-				B8C77BE71A9BCAF5007F86D1 /* MainViewController.m */,
+				B8B5FC601A9C1F5D00333381 /* Model */,
+				B8B5FC5C1A9C1F2C00333381 /* VC */,
 				B8C77C051A9BCB4E007F86D1 /* ArrayDataSource.h */,
 				B8C77C061A9BCB4E007F86D1 /* ArrayDataSource.m */,
 				B8C77BE91A9BCAF5007F86D1 /* Main.storyboard */,
-				B8C77C081A9BDA2B007F86D1 /* PageContentViewController.h */,
-				B8C77C091A9BDA2B007F86D1 /* PageContentViewController.m */,
 				B8C77BEC1A9BCAF5007F86D1 /* Images.xcassets */,
 				B8C77BEE1A9BCAF5007F86D1 /* LaunchScreen.xib */,
 				B8C77BDF1A9BCAF5007F86D1 /* Supporting Files */,
@@ -229,11 +272,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C77BE81A9BCAF5007F86D1 /* MainViewController.m in Sources */,
+				B8C77BE81A9BCAF5007F86D1 /* MusicianViewController.m in Sources */,
 				B8C77BE51A9BCAF5007F86D1 /* AppDelegate.m in Sources */,
-				B8C77C0A1A9BDA2B007F86D1 /* PageContentViewController.m in Sources */,
+				B8B5FC691A9C202C00333381 /* ProfileViewController.m in Sources */,
+				B8B5FC711A9D1FBE00333381 /* NetworkController.m in Sources */,
+				B8B5FC631A9C1F6E00333381 /* User.m in Sources */,
+				B8B5FC5F1A9C1F5200333381 /* Musician.m in Sources */,
+				B8B5FC661A9C200C00333381 /* FavoritesTableViewController.m in Sources */,
 				B8C77C071A9BCB4E007F86D1 /* ArrayDataSource.m in Sources */,
 				B8C77BE21A9BCAF5007F86D1 /* main.m in Sources */,
+				B8B5FC6C1A9C204200333381 /* ChatViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
