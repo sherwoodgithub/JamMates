@@ -10,6 +10,8 @@
 
 @interface NetworkController : NSObject
 
++(NetworkController *) sharedNetworkController;
+
 +(void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void(^)(NSData *))completionHandler;
 
 @end

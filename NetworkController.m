@@ -13,6 +13,15 @@
 
 @implementation NetworkController
 
+static NetworkController *sharedNetworkController = nil;
+
++(NetworkController *) sharedNetworkController {
+  if (sharedNetworkController == nil) {
+    sharedNetworkController = [[super allocWithZone:NULL] init];
+  }
+  return sharedNetworkController;
+}
+
 # pragma mark - JSON download
 
 +(void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void(^)(NSData *))completionHandler{
@@ -28,8 +37,8 @@
     }
     else {
       NSInteger HTTPStatusCode = [(NSHTTPURLResponse *)response statusCode];
-      
-      if (HTTPStatusCode != 200) {
+#warning correct logic?
+      if (HTTPStatusCode <= 200 || HTTPStatusCode >= 299) {
         NSLog(@"HTTP status code = %ld", (long)HTTPStatusCode);
       }
       // call to completion handler w/ returned data -> main thread
@@ -40,6 +49,19 @@
   }];
   [task resume];
 }
+
+// requestOAuthAccess
+
+// fetchTracks
+
+// POST to SQL : username psswd track (stack exchange search)
+// ^package data to JSON
+
+// POST request & attach JSON
+
+// get track for tableview cell
+
+// pull request for photos url?
 
 
 

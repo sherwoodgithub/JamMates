@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MusicianViewController : UIViewController
+@interface MusicianViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 @end
 

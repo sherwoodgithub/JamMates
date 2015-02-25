@@ -26,7 +26,8 @@
   for (NSDictionary *item in items) {
     User *user = [[User alloc] init];
     user.userName = item[@"user_name"];
-    user.token = item[@"user_token"];
+    user.SCtoken = item[@"soundCloud_token"];
+    user.SQLtoken = item[@"SQLdatabase_token"];
     user.displayName = item[@"display_name"];
     user.bandName = item[@"band_name"];
     user.location = item[@"location"];
