@@ -24,7 +24,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   //[self addMyButton];
-#warning need below:
+
+  
   //    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"OAuthToken"] == nil) { get token
   // } else { tracksArray gets results of network controller request tracks
   

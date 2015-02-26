@@ -146,7 +146,7 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
 
 // Tuan
 -(void)fetchSoundCloudTracks: (void(^)(NSArray *resultArray, NSString *error)) completionHandler; {
-  
+  NSLog(@"\n\n\n\nfetchSoundCloudTracks\n\n\n\n");
   NSString *accessToken = [[NSUserDefaults standardUserDefaults]valueForKey:@"OAuthToken"];
   
   NSString* urlString = [NSString stringWithFormat:@"https://api.soundcloud.com/users/80502172/favorites.json?oauth_token=%@", accessToken];
@@ -179,7 +179,7 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
 //
 -(NSMutableArray *) searchForTracksWithQuery: (NSString *) query {
   NSString *scToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"SCToken"];
-  
+  NSLog(@"\n\n\n\nsearchForTracksWithQuery:\n\n\n\n\n");
   if(query.length >0)
     query = [query stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
   NSString *jsonString =[NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/tracks.json?oauth_token=%@&client_id=%@&q=%@",SC_API_URL,scToken,clientID,query]] encoding:NSUTF8StringEncoding error:nil];
@@ -195,11 +195,28 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
     if([[result objectForKey:@"kind" ] isEqualToString:@"track"])
     {
       [returnArray addObject:result];
-      
     }
   }
   return returnArray;
 }
+/*
+-(void)fetchUserImage:(NSString *)avatarURL completionHandler:(void (^) (UIImage *image))completionHandler {
+  
+  dispatch_queue_t imageQueue     = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0);
+  dispatch_async(imageQueue, ^{
+    
+    NSURL *url                      = [NSURL URLWithString:avatarURL];
+    NSData *data                    = [[NSData alloc] initWithContentsOfURL:url];
+    UIImage *image                  = [UIImage imageWithData:data];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+      
+      completionHandler(image);
+    });//main queue
+  });//image queue
+}//fetch user image
+*/
+
 /*
 - (void) fetchDrinkForSong:(NSString *)title withArtist: (NSString *) artist withCompletionHandler:(void (^)(NSString *, Drink *))success; {
   NSString *songTitleNoSpaces = [title stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
