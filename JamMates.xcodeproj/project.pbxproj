@@ -25,6 +25,8 @@
 		B8B5FD0B1A9E76D100333381 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD0A1A9E76D100333381 /* Track.m */; };
 		B8B5FD0E1A9EBC1000333381 /* SearchTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD0D1A9EBC1000333381 /* SearchTracksViewController.m */; };
 		B8B5FD111A9EC05E00333381 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD101A9EC05E00333381 /* QuestionTableViewCell.m */; };
+		B8B5FD141A9F988000333381 /* ButtonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD131A9F987F00333381 /* ButtonUI.m */; };
+		B8B5FD171A9F9A6E00333381 /* commonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD161A9F9A6E00333381 /* commonUI.m */; };
 		B8C77BE21A9BCAF5007F86D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77BE11A9BCAF5007F86D1 /* main.m */; };
 		B8C77BE51A9BCAF5007F86D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77BE41A9BCAF5007F86D1 /* AppDelegate.m */; };
 		B8C77BE81A9BCAF5007F86D1 /* MusicianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77BE71A9BCAF5007F86D1 /* MusicianViewController.m */; };
@@ -77,6 +79,10 @@
 		B8B5FD0D1A9EBC1000333381 /* SearchTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTracksViewController.m; sourceTree = "<group>"; };
 		B8B5FD0F1A9EC05E00333381 /* QuestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTableViewCell.h; sourceTree = "<group>"; };
 		B8B5FD101A9EC05E00333381 /* QuestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTableViewCell.m; sourceTree = "<group>"; };
+		B8B5FD121A9F987F00333381 /* ButtonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonUI.h; sourceTree = "<group>"; };
+		B8B5FD131A9F987F00333381 /* ButtonUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonUI.m; sourceTree = "<group>"; };
+		B8B5FD151A9F9A6E00333381 /* commonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commonUI.h; sourceTree = "<group>"; };
+		B8B5FD161A9F9A6E00333381 /* commonUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commonUI.m; sourceTree = "<group>"; };
 		B8C77BDC1A9BCAF5007F86D1 /* JamMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C77BE01A9BCAF5007F86D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8C77BE11A9BCAF5007F86D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -159,6 +165,10 @@
 				B8B5FCFA1A9E3E6200333381 /* SCTableViewCell.xib */,
 				B8B5FCFC1A9E3F5100333381 /* SCTableViewCell.h */,
 				B8B5FCFD1A9E3F5100333381 /* SCTableViewCell.m */,
+				B8B5FD121A9F987F00333381 /* ButtonUI.h */,
+				B8B5FD131A9F987F00333381 /* ButtonUI.m */,
+				B8B5FD151A9F9A6E00333381 /* commonUI.h */,
+				B8B5FD161A9F9A6E00333381 /* commonUI.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -334,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8B5FD171A9F9A6E00333381 /* commonUI.m in Sources */,
 				B8B5FCF91A9D7DEC00333381 /* ProfileDetailSearchViewController.m in Sources */,
 				B8B5FD081A9E66E800333381 /* FavoritesBank.m in Sources */,
 				B8B5FCFE1A9E3F5100333381 /* SCTableViewCell.m in Sources */,
@@ -344,6 +355,7 @@
 				B8B5FD0B1A9E76D100333381 /* Track.m in Sources */,
 				B8B5FCF61A9D6FAC00333381 /* LoginViewController.m in Sources */,
 				B8B5FC631A9C1F6E00333381 /* User.m in Sources */,
+				B8B5FD141A9F988000333381 /* ButtonUI.m in Sources */,
 				B8B5FD0E1A9EBC1000333381 /* SearchTracksViewController.m in Sources */,
 				B8B5FC661A9C200C00333381 /* FavoritesTableViewController.m in Sources */,
 				B8C77C071A9BCB4E007F86D1 /* ArrayDataSource.m in Sources */,

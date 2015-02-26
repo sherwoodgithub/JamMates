@@ -26,6 +26,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 #warning need below:
+  //MUSICIAN_CELL identifier for prepare for segue
   if ([[NSUserDefaults standardUserDefaults]objectForKey:@"SCToken"] == nil) {
     [[NetworkController sharedNetworkController] requestOAuthAccess];
   }

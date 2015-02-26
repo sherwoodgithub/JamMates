@@ -23,6 +23,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  //[self addMyButton];
 #warning need below:
   //    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"OAuthToken"] == nil) { get token
   // } else { tracksArray gets results of network controller request tracks
@@ -73,6 +74,24 @@
   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
   
 }
+/*
+- (void)addMyButton{    // Method for creating button, with background image and other properties
+  
+  UIButton *playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  playButton.frame = CGRectMake(210.0, 80.0, 100.0, 30.0);
+  [playButton setTitle:@"Play" forState:UIControlStateNormal];
+  playButton.backgroundColor = [UIColor blueColor];
+  [playButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal ];
+  UIImage *buttonImageNormal = [UIImage imageNamed:@"blueButton.png"];
+  UIImage *strechableButtonImageNormal = [buttonImageNormal stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+  [playButton setBackgroundImage:strechableButtonImageNormal forState:UIControlStateNormal];
+  UIImage *buttonImagePressed = [UIImage imageNamed:@"whiteButton.png"];
+  UIImage *strechableButtonImagePressed = [buttonImagePressed stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+  [playButton setBackgroundImage:strechableButtonImagePressed forState:UIControlStateHighlighted];
+  [playButton addTarget:self action:@selector(playAction:) forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:playButton];
+}
+ */
 //- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 /*
  -(void)tableView:(UITableView *)tableView willDisplayCell:(SCTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {

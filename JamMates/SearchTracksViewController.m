@@ -50,8 +50,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
    QuestionTableViewCell *cell             = [tableView dequeueReusableCellWithIdentifier:@"QUESTION_CELL"forIndexPath:indexPath];
  // cell.avatarImageView.image     = nil;
-  Quest *question             = self.questions[indexPath.row];
-  cell.titleTextView.text        = question.title;
+ // Quest *question             = self.questions[indexPath.row];
+ // cell.titleTextView.text        = question.title;
   
 //  if (!question.image) {
 //    
