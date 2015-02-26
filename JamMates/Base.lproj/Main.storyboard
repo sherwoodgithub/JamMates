@@ -8,7 +8,7 @@
         <!--ProfileViewController-->
         <scene sceneID="ERq-ku-NFi">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" id="qKP-Y6-wQ6" userLabel="ProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="qKP-Y6-wQ6" userLabel="ProfileViewController" customClass="ProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K4v-aN-5q5"/>
                         <viewControllerLayoutGuide type="bottom" id="IhS-Ov-JAM"/>
@@ -36,7 +36,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LAG-L1-HuU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LAG-L1-HuU">
                                 <rect key="frame" x="32" y="261" width="536" height="268"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -95,6 +95,9 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Profile" id="3TD-eF-PFI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="profileTableView" destination="LAG-L1-HuU" id="BEv-Ij-h1C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xd9-MC-7Ux" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,10 +132,10 @@
             </objects>
             <point key="canvasLocation" x="1952" y="-1400"/>
         </scene>
-        <!--Search Questions View Controller-->
+        <!--Search Tracks View Controller-->
         <scene sceneID="98S-pp-3Ry">
             <objects>
-                <viewController id="s6u-Ob-cOt" customClass="SearchQuestionsViewController" sceneMemberID="viewController">
+                <viewController id="s6u-Ob-cOt" customClass="SearchTracksViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wow-Wx-e2H"/>
                         <viewControllerLayoutGuide type="bottom" id="3Xs-WC-JzJ"/>
@@ -150,7 +153,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="questionCell" rowHeight="90" id="cwu-Xr-ES9" customClass="QuestionCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QUESTION_CELL" rowHeight="90" id="cwu-Xr-ES9" customClass="QuestionTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cwu-Xr-ES9" id="IaZ-Wk-y9T">
@@ -182,8 +185,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="avatarImageView" destination="LtC-Xc-sFv" id="HJi-w7-RD4"/>
-                                            <outlet property="titleTextView" destination="h6J-N4-M9G" id="l4y-L5-uin"/>
+                                            <outlet property="titleTextView" destination="h6J-N4-M9G" id="mDA-ga-v9I"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

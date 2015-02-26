@@ -21,8 +21,7 @@
   WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.frame];
   [self.view addSubview:webView];
   webView.navigationDelegate = self;
-  
-  NSString *urlString = @"https://stackexchange.com/oauth/dialog?client_id=4292&scope=no_expiry&redirect_uri=https://stackexchange.com/oauth/login_success";
+  NSString *urlString = @"https://soundcloud.com/connect?client_id=0c179b66c4fe77ec437daa893f8e564a&redirect_uri=JamMates://oauth";
   NSURL *url = [NSURL URLWithString:urlString];
   [webView loadRequest:[NSURLRequest requestWithURL:url]]; //sets up webview for request with url
 }

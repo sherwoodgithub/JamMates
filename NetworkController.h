@@ -9,10 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface NetworkController : NSObject
+#define SC_API_URL @"https://api.soundcloud.com" //*
+@property (strong, nonatomic)  NSMutableArray *scTrackResultList; //*
 
 +(NetworkController *) sharedNetworkController;
-
 +(void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void(^)(NSData *))completionHandler;
+
+-(NSMutableArray *) searchForTracksWithQuery: (NSString *) query;
+-(void)requestOAuthAccess;
+-(void)handleOAuthURL: (NSURL*) callbackURL;
 
 @end
 

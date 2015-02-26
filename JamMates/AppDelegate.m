@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "NetworkController.h"
 
 @interface AppDelegate ()
 
@@ -14,8 +15,13 @@
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+  [[NetworkController sharedNetworkController]handleOAuthURL:url];
+  return YES;
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  
   return YES;
 }
 

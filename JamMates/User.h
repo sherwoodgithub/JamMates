@@ -13,7 +13,7 @@
 +(NSArray *)userFromJSON:(NSData *)jsonData;
 
 @property (strong, nonatomic) NSString *userName;
-@property (strong, nonatomic) NSString *SCtoken;
+@property (strong, nonatomic) NSString *SCToken;
 @property (strong, nonatomic) NSString *SQLtoken;
 @property (strong, nonatomic) NSString *displayName;
 @property (strong, nonatomic) NSString *bandName;

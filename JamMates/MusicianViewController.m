@@ -8,6 +8,8 @@
 
 #import "MusicianViewController.h"
 #import "SCTableViewCell.h"
+#import "NetworkController.h"
+
 #import <AVFoundation/AVFoundation.h>
 
 @interface MusicianViewController ()
@@ -24,9 +26,14 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 #warning need below:
-  //    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"OAuthToken"] == nil) { get token
-  // } else { tracksArray gets results of network controller request tracks
+  if ([[NSUserDefaults standardUserDefaults]objectForKey:@"SCToken"] == nil) {
+    [[NetworkController sharedNetworkController] requestOAuthAccess];
+  }
   
+// Network Controller
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+  NSString *token = [userDefaults stringForKey:@"SCToken"];
+    
 //Audio Track
   NSString *path = [NSString stringWithFormat:@"%@/200.mp3",[[NSBundle mainBundle] resourcePath]];
   NSURL *soundURL = [NSURL fileURLWithPath:path];
@@ -57,7 +64,6 @@
   }
   cell.label.text = [self.items objectAtIndex:indexPath.row];
   cell.imageView.image = [UIImage imageNamed:@"musician.jpg"];
-  NSLog(@"description = %@",[cell description]);
   return cell;
 }
 
@@ -68,7 +74,8 @@
 }
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-  [_audioPlayer pause];
+  [_audioPlayer stop];
+  [_audioPlayer setCurrentTime:0];
   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
 }
