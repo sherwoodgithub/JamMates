@@ -247,50 +247,167 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
 }//fetch user image
 */
 
-/*
-- (void) fetchDrinkForSong:(NSString *)title withArtist: (NSString *) artist withCompletionHandler:(void (^)(NSString *, Drink *))success; {
-  NSString *songTitleNoSpaces = [title stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-  NSString *songArtistNoSpaces = [artist stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-  NSString *api_key = @"FGSG5VYMGP92BYLA8";
-  NSString *urlString = [NSString stringWithFormat: @"https://developer.echonest.com/api/v4/song/search?api_key=%@&artist=%@&title=%@", api_key, songArtistNoSpaces, songTitleNoSpaces];
-  NSLog(@"%@", urlString);
-  NSDictionary *dict = @{@"url" : urlString};
-  NSError *error;
-  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options: NSJSONWritingPrettyPrinted error:&error];
-  NSString *herokuURLString = @"https://musicholic.herokuapp.com/api";
-  NSURL *url = [NSURL URLWithString:herokuURLString];
-  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-  [request setHTTPMethod:@"POST"];
-  NSString *contentLengthString = [NSString stringWithFormat:@"%lu", (unsigned long)[jsonData length]];
-  [request setValue:contentLengthString forHTTPHeaderField: @"Content-Length"];
-  [request setValue:contentLengthString forHTTPHeaderField: @"Accept"];
-  [request setValue:@"application/json" forHTTPHeaderField: @"Content-Type"];
-  [request setHTTPBody: jsonData];
+//: (NSString *)userName withPassword: (NSString *)password
+- (void) createUser: (void (^) (NSString *token, NSString *error)) completionHandler {
   
- //This part should be fairly universal: POST REQUESTS
- NSURLSessionDataTask *dataRequest = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-    if ([response isKindOfClass: [NSHTTPURLResponse class]]) {
-      NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) response;
-      NSLog(@"status code is %ld",(long)[httpResponse statusCode]);
-      if ([httpResponse statusCode] >= 200 && [httpResponse statusCode] <= 204 ) {
-        NSLog(@"status code 200");
-        
-        Drink *drink = [[Drink alloc] parseJSONDataIntoDrink:data];
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-          success(nil, drink);
-        }];
-        
-      } else {
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-          NSLog(@"There was an error: %@",error.localizedDescription);
-          success(error.localizedDescription, nil);
-        }];
-      }
+  NSString *localToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+  if (localToken == nil) {
+    NSString *userName = @"BobLobLaw";
+    NSString *userPassword = @"password12345";
+    NSDictionary *userDict = @{@"username" : userName, @"password" : userPassword};
+    //NSLog(@"%@", userString);
+    
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:userDict options:0 error:&error];
+    
+    if (jsonData) {
+      
+      NSLog(@"user dictionary = %@", jsonData.description);
+      
+    } else {
+      NSLog(@"Unable to serialize the data %@: %@", userDict, error);
     }
-  }];
-  [dataRequest resume];
+    
+    NSString *urlString             = @"http://bandmates.herokuapp.com/api/user";
+    NSURL *url                      = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request    = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:jsonData];
+    
+    NSURLSession *session           = [NSURLSession sharedSession];
+    
+    NSURLSessionTask *dataTask      = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+      
+      if (error) {
+        NSLog(@"could not connet %@",error.description);
+        completionHandler(nil,@"Could not connect because %@");
+      } else {
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        NSInteger statusCode            = httpResponse.statusCode;
+        NSLog(@"the status code for post was %lu", statusCode);
+        NSLog(@"the responce was %@", httpResponse.description);
+        switch (statusCode) {
+            
+          case 200 ... 299: {
+            
+            //           NSLog(@"the status code was %ld",(long)statusCode);
+            //
+            //NSData* tokenData = [NSJSONSerialization dataWithJSONObject:data options:0 error:&error];
+            //            NSLog(@"%@",tokenDict);
+            break;
+          }//case 200..299
+          default:
+            NSLog(@"%ld",(long)statusCode);
+            break;
+        }//switch
+      }//if else
+    }];//data task
+    [dataTask resume];
+    //
+  }
+  
+//  NSDictionary* headers = @{@"accept": @"application/json"};
+//  NSDictionary* parameters = @{@"parameter": @"value", @"foo": @"bar"};
+//  
+//  NSHTTPURLResponse *response = [[UNIRest post:^(UNISimpleRequest *request) {
+//    [request setUrl:@"http://httpbin.org/post"];
+//    [request setHeaders:headers];
+//    [request setParameters:parameters];
+//  }] asJson];
+//  
+//  NSString *userName = @"BobLobLaw";
+//  NSString *userPassword = @"password12345";
+//  NSDictionary *dict = @{@"username" : userName, @"password" : userPassword};
+//  
+//  NSLog(dict);
+//  
+//  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+//  NSString *databaseURLString = @"http://bandmates.herokuapp.com/api/user";
+//  NSURL *url = [NSURL URLWithString:databaseURLString];
+//  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+//  [request setHTTPMethod:@"POST"];
+//  // ?!
+//  NSString *contentLengthString = [NSString stringWithFormat:@"%lu", (unsigned long) [jsonData length]];
+//  [request setValue:contentLengthString forHTTPHeaderField:@"Content-Length"];
+//  //[request setValue:contentLengthString forHTTPHeaderField: @"Accept"];
+//  [request setValue:@"application/json" forHTTPHeaderField: @"Content-Type"];
+//  [request setHTTPBody: jsonData];
+//  
+//  NSLog(jsonData);
+//  
+//  NSURLSessionDataTask *dataRequest = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//    if ([response isKindOfClass: [NSHTTPURLResponse class]]) {
+//      NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) response;
+//      NSLog(@"status code is %ld",(long)[httpResponse statusCode]);
+//      if ([httpResponse statusCode] >= 200 && [httpResponse statusCode] <= 204 ) {
+//        NSLog(@"status code 200");
+//        
+//        Drink *drink = [[Drink alloc] parseJSONDataIntoDrink:data];
+//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//          success(nil, drink);
+//        }];
+//        
+//      } else {
+//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//          NSLog(@"There was an error: %@",error.localizedDescription);
+//          success(error.localizedDescription, nil);
+//        }];
+//      }
+//    }
+//  }];
+//  [dataRequest resume];
 }
-*/
+
+//- (void) fetchDrinkForSong:(NSString *)title withArtist: (NSString *) artist withCompletionHandler:(void (^)(NSString *, Drink *))success; {
+//  
+//  
+//  NSString *songTitleNoSpaces = [title stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+//  NSString *songArtistNoSpaces = [artist stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+//  NSString *api_key = @"FGSG5VYMGP92BYLA8";
+//  NSString *urlString = [NSString stringWithFormat: @"https://developer.echonest.com/api/v4/song/search?api_key=%@&artist=%@&title=%@", api_key, songArtistNoSpaces, songTitleNoSpaces];
+//  NSLog(@"%@", urlString);
+//  NSDictionary *dict = @{@"url" : urlString};
+//  NSError *error;
+//  
+//  
+//  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options: NSJSONWritingPrettyPrinted error:&error];
+//  NSString *herokuURLString = @"https://musicholic.herokuapp.com/api";
+//  NSURL *url = [NSURL URLWithString:herokuURLString];
+//  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+//  [request setHTTPMethod:@"POST"];
+//  NSString *contentLengthString = [NSString stringWithFormat:@"%lu", (unsigned long)[jsonData length]];
+//  [request setValue:contentLengthString forHTTPHeaderField: @"Content-Length"];
+//  [request setValue:contentLengthString forHTTPHeaderField: @"Accept"];
+//  [request setValue:@"application/json" forHTTPHeaderField: @"Content-Type"];
+//  [request setHTTPBody: jsonData];
+//  
+// //This part should be fairly universal: POST REQUESTS
+// NSURLSessionDataTask *dataRequest = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//    if ([response isKindOfClass: [NSHTTPURLResponse class]]) {
+//      NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) response;
+//      NSLog(@"status code is %ld",(long)[httpResponse statusCode]);
+//      if ([httpResponse statusCode] >= 200 && [httpResponse statusCode] <= 204 ) {
+//        NSLog(@"status code 200");
+//        
+//        Drink *drink = [[Drink alloc] parseJSONDataIntoDrink:data];
+//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//          success(nil, drink);
+//        }];
+//        
+//      } else {
+//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//          NSLog(@"There was an error: %@",error.localizedDescription);
+//          success(error.localizedDescription, nil);
+//        }];
+//      }
+//    }
+//  }];
+//  [dataRequest resume];
+//}
+
 /*
 // jeff
 - (void) fetchImageForDrink: (Drink *)drink withCompletionHandler:(void (^)(UIImage *)) success; {

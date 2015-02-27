@@ -55,6 +55,9 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  // TrackTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+  // track.streamURL = cell.stream_url
+  // user.streamURL property  of track[0] is updated
 
 }
 

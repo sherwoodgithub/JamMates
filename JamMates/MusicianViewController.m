@@ -38,6 +38,11 @@
 // Network Controller
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   NSString *token = [userDefaults stringForKey:@"SCToken"];
+  
+// DATABASE CREATE USER
+  [[NetworkController sharedNetworkController] createUser:^(NSString *token, NSString *error) {
+    NSLog(@"%@",token);
+  }];
     
 //Audio Track
   NSString *path = [NSString stringWithFormat:@"%@/200.mp3",[[NSBundle mainBundle] resourcePath]];

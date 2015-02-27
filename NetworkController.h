@@ -18,6 +18,7 @@
 -(void) searchForTracksWithQuery: (NSString *) query withCompletionHandler: (void(^)(NSArray *resultArray, NSString *error)) completionHandler;
 -(void)requestOAuthAccess;
 -(void)handleOAuthURL: (NSURL*) callbackURL;
+- (void) createUser: (void (^) (NSString *token, NSString *error)) completionHandler {
 
 @end
 

@@ -36,6 +36,7 @@
   _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
   
   //Tableview Nib
+  // SWAP @"ITEM 1"... for User.track1, User.track2, User.track3
   _items = @[@"item 1", @"item 2",@"item 3"];
   [self.profileTableView registerNib:[UINib nibWithNibName:@"SCTableViewCell" bundle:nil] forCellReuseIdentifier:@"SOUNDCLOUD_CELL"];
   self.profileTableView.dataSource = self;
@@ -64,15 +65,26 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  // if edit mode:
+    // go to searchViewController
+    // update cell with user track
+      // maybe? ... [self.items objectAtIndex:indexPath.row];
+      // present searchViewController
+  
+  // else ( play mode ) :
   [_audioPlayer play];
+  
+  // for giving us a checkmark upon click
   UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
   cell.accessoryType = UITableViewCellAccessoryCheckmark;
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-  UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
   [_audioPlayer stop];
   [_audioPlayer setCurrentTime:0];
+  
+  // for giving us a disclosureindicator back
+  UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
   
 }
