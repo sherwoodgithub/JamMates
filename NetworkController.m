@@ -165,7 +165,7 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
           completionHandler(resultArray, nil);
         }];
       }else{
-        NSLog(@"%ld", (long)responseCode);
+        NSLog(@"responseCode of fetchSoundCloudTracks %ld", (long)responseCode);
       }
     }
   }];
@@ -174,7 +174,7 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
 
 -(void) searchForTracksWithQuery: (NSString *) query withCompletionHandler: (void(^)(NSArray *resultArray, NSString *error)) completionHandler {
   NSString *scToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"SCToken"];
- // NSLog(@"\n\n\n\nsearchForTracksWithQuery:\n\n\n\n\n");
+  NSLog(@"\n\n\n\nsearchForTracksWithQuery:\n\n\n\n\n");
   if(query.length >0)
     query = [query stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
   
@@ -192,8 +192,9 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
       NSInteger responseCode = [callResponse statusCode];
       
       if (responseCode >= 200 && responseCode <= 299) {
-        NSLog(@"FAVORITED 200");
+       // NSLog(@"code 200");
         NSArray* resultArray = [Track parseJSONData:data];
+        NSLog(@"\n\n\n\ndata\n\n\n\n%@", data);
         [[NSOperationQueue mainQueue]addOperationWithBlock:^{
           completionHandler(resultArray, nil);
         }];

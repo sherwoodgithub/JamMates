@@ -30,6 +30,9 @@
   if ([JSONArray isKindOfClass:[NSArray class]]) {
     for (NSDictionary *trackDictionary in JSONArray) {
       Track *trackObject = [[Track alloc]initDictionary: trackDictionary];
+      trackObject.title = trackDictionary[@"title"];
+      trackObject.stream_url = trackDictionary[@"stream_url"];
+      NSLog(@"\n\n\ntrackTitle: %@, \n\n\ntrackStreamURL: %@", trackObject.title, trackObject.stream_url);
       [trackArray addObject:trackObject];
     }
   }

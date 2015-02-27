@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface SearchTracksViewController : UIViewController
 
 @property (strong, nonatomic) NSString *trackTitle;
 @property (strong, nonatomic) NSString *trackURL;
-
+@property (strong, nonatomic) AVPlayer *player;
 @end
