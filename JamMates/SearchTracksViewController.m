@@ -27,7 +27,7 @@
   self.searchBar.delegate = self;
   self.tableView.dataSource = self;
   self.tableView.rowHeight = UITableViewAutomaticDimension;
-}//view did load
+}
 
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {

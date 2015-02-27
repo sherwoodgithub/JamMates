@@ -123,6 +123,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B897CF541AA0465E00DE2206 /* Junk */ = {
+			isa = PBXGroup;
+			children = (
+				B8B5FC6E1A9D1EBB00333381 /* NetworkCommunicatorDelegate.h */,
+				B8B5FC6A1A9C204200333381 /* ChatViewController.h */,
+				B8B5FC6B1A9C204200333381 /* ChatViewController.m */,
+				B8B5FCF71A9D7DEC00333381 /* ProfileDetailSearchViewController.h */,
+				B8B5FCF81A9D7DEC00333381 /* ProfileDetailSearchViewController.m */,
+			);
+			name = Junk;
+			sourceTree = "<group>";
+		};
+		B897CF551AA0466B00DE2206 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B8B5FD181A9FADA600333381 /* MessageUI.framework */,
+				B8B5FD021A9E56BC00333381 /* CoreGraphics.framework */,
+				B8B5FD001A9E56AE00333381 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B8B5FC5C1A9C1F2C00333381 /* VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +192,10 @@
 				B8B5FD131A9F987F00333381 /* ButtonUI.m */,
 				B8B5FD151A9F9A6E00333381 /* commonUI.h */,
 				B8B5FD161A9F9A6E00333381 /* commonUI.m */,
+				B8B5FCF21A9D632300333381 /* user.jpg */,
+				B8C77BEE1A9BCAF5007F86D1 /* LaunchScreen.xib */,
+				B8C77BEC1A9BCAF5007F86D1 /* Images.xcassets */,
+				B8B5FCF01A9D631100333381 /* musician.jpg */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -177,9 +203,7 @@
 		B8C77BD31A9BCAF5007F86D1 = {
 			isa = PBXGroup;
 			children = (
-				B8B5FD181A9FADA600333381 /* MessageUI.framework */,
-				B8B5FD021A9E56BC00333381 /* CoreGraphics.framework */,
-				B8B5FD001A9E56AE00333381 /* AVFoundation.framework */,
+				B897CF551AA0466B00DE2206 /* Frameworks */,
 				B8C77BDE1A9BCAF5007F86D1 /* JamMates */,
 				B8C77BF81A9BCAF5007F86D1 /* JamMatesTests */,
 				B8C77BDD1A9BCAF5007F86D1 /* Products */,
@@ -198,21 +222,13 @@
 		B8C77BDE1A9BCAF5007F86D1 /* JamMates */ = {
 			isa = PBXGroup;
 			children = (
-				B8B5FC6E1A9D1EBB00333381 /* NetworkCommunicatorDelegate.h */,
-				B8B5FC6A1A9C204200333381 /* ChatViewController.h */,
-				B8B5FC6B1A9C204200333381 /* ChatViewController.m */,
-				B8B5FCF71A9D7DEC00333381 /* ProfileDetailSearchViewController.h */,
-				B8B5FCF81A9D7DEC00333381 /* ProfileDetailSearchViewController.m */,
+				B897CF541AA0465E00DE2206 /* Junk */,
 				B8C77BE31A9BCAF5007F86D1 /* AppDelegate.h */,
 				B8C77BE41A9BCAF5007F86D1 /* AppDelegate.m */,
 				B8B5FD041A9E588100333381 /* 200.mp3 */,
 				B8B5FC601A9C1F5D00333381 /* Model */,
 				B8B5FC5C1A9C1F2C00333381 /* VC */,
 				B8B5FCFF1A9E3F7C00333381 /* View */,
-				B8B5FCF01A9D631100333381 /* musician.jpg */,
-				B8B5FCF21A9D632300333381 /* user.jpg */,
-				B8C77BEC1A9BCAF5007F86D1 /* Images.xcassets */,
-				B8C77BEE1A9BCAF5007F86D1 /* LaunchScreen.xib */,
 				B8C77BDF1A9BCAF5007F86D1 /* Supporting Files */,
 			);
 			path = JamMates;

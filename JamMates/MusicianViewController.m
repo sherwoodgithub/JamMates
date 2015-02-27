@@ -38,12 +38,18 @@
 // Network Controller
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   NSString *token = [userDefaults stringForKey:@"SCToken"];
+  NSString *DBtoken = [userDefaults stringForKey:@"SQLtoken"];
   
+#warning - below token IS SAME AS SOUNDCLOUD TOKEN
 // DATABASE CREATE USER
-  [[NetworkController sharedNetworkController] createUser:^(NSString *token, NSString *error) {
-    NSLog(@"%@",token);
-  }];
-    
+//  [[NetworkController sharedNetworkController] createUser:^(NSString *token, NSString *error) {
+//    NSLog(@"%@",token);
+//    NSString *DBtoken = [userDefaults stringForKey:@"SQLtoken"];
+//    NSLog(@"\n\n\n\n\n SQLtoken: %@",DBtoken);
+//
+//  }];
+
+  
 //Audio Track
   NSString *path = [NSString stringWithFormat:@"%@/200.mp3",[[NSBundle mainBundle] resourcePath]];
   NSURL *soundURL = [NSURL fileURLWithPath:path];
@@ -68,6 +74,7 @@
 
 -(SCTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   SCTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SOUNDCLOUD_CELL"];
+  
   if (!cell) {
     [self.musicianTableView registerNib:[UINib nibWithNibName:@"SCTableViewCell" bundle:nil] forCellReuseIdentifier:@"SOUNDCLOUD_CELL"];
     cell = [tableView dequeueReusableCellWithIdentifier:@"@SOUNDCLOUD_CELL"];
@@ -78,11 +85,14 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  
   [_audioPlayer play];
   UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
   cell.accessoryType = UITableViewCellAccessoryCheckmark;
 }
+
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+  
   UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
   [_audioPlayer stop];
   [_audioPlayer setCurrentTime:0];
@@ -137,7 +147,6 @@
 
 - (IBAction)textButtonPressed:(id)sender {
   [self showSMS];
-
 }
 
 - (IBAction)emailButtonPressed:(id)sender {

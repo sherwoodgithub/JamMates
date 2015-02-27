@@ -50,7 +50,6 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
   return self;
 }
 
-
 # pragma mark - JSON download
 
 +(void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void(^)(NSData *))completionHandler{
@@ -87,7 +86,6 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
   NSLog(@"%@", loginURL);
 }
 
-//Tuan
 -(void)handleOAuthURL: (NSURL*) callbackURL {
   NSString* query = callbackURL.query;
   NSArray* component = [query componentsSeparatedByString:@"="];
@@ -108,13 +106,12 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
     
     if (!jsonData) {
       NSLog(@"json Data %@",error.description);
-    } else {
+    }
+    else {
       NSString *JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
       NSLog(@"JSON String %@",JSONString);
       [request setHTTPBody:jsonData];
     }
-    
-    
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     NSURLSessionDataTask *dataTask = [[self session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -124,9 +121,7 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
         
         if (responseCode >= 200 && responseCode <= 299) {
           NSString* tokenResponse = [[NSString alloc]initWithData:data encoding:NSASCIIStringEncoding];
-          
           NSLog(@"%@", tokenResponse);
-          
           NSArray* componentOne = [tokenResponse componentsSeparatedByString:@":"];
           NSArray* componentTwo = [componentOne[1] componentsSeparatedByString:@","];
           NSArray* componentThree = [componentTwo[0] componentsSeparatedByString:@"\""];
@@ -135,8 +130,8 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
           
           [[NSUserDefaults standardUserDefaults] setValue:parsedToken forKey:@"SCToken"];
           [[NSUserDefaults standardUserDefaults] synchronize];
-          
-        }else{
+        }
+        else {
           NSLog(@"%ld", (long)responseCode);
         }
       }
@@ -177,7 +172,6 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
   [dataTask resume];
 }
 
-//
 -(void) searchForTracksWithQuery: (NSString *) query withCompletionHandler: (void(^)(NSArray *resultArray, NSString *error)) completionHandler {
   NSString *scToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"SCToken"];
  // NSLog(@"\n\n\n\nsearchForTracksWithQuery:\n\n\n\n\n");
@@ -211,202 +205,81 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
   [dataTask resume];
 }
 
-  
-  //NSLog(@"%@",jsonString);
-//  NSMutableArray *musicArray;
-//  self.scTrackResultList = [[NSMutableArray alloc]init];
-//  
-//  NSMutableArray *returnArray = [[NSMutableArray alloc]init];
-//  
-//  for(int i=0; i< musicArray.count;i++)
-//  {
-//    NSMutableDictionary *result = [musicArray objectAtIndex:i];
-//    if([[result objectForKey:@"kind" ] isEqualToString:@"track"])
-//    {
-//      [returnArray addObject:result];
-//    }
-//  }
- // NSLog(musicArray);
-//  return returnArray;
-
-/*
--(void)fetchUserImage:(NSString *)avatarURL completionHandler:(void (^) (UIImage *image))completionHandler {
-  
-  dispatch_queue_t imageQueue     = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0);
-  dispatch_async(imageQueue, ^{
-    
-    NSURL *url                      = [NSURL URLWithString:avatarURL];
-    NSData *data                    = [[NSData alloc] initWithContentsOfURL:url];
-    UIImage *image                  = [UIImage imageWithData:data];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-      
-      completionHandler(image);
-    });//main queue
-  });//image queue
-}//fetch user image
-*/
-
-//: (NSString *)userName withPassword: (NSString *)password
+#pragma mark - JavaScript Database
+#warning createUser still relies on hard-coded userName !! NOT AUTOMATIC !!
 - (void) createUser: (void (^) (NSString *token, NSString *error)) completionHandler {
   
-  NSString *localToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+  NSString *localToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"SQLtoken"];
   if (localToken == nil) {
-    NSString *userName = @"BobLobLaw";
+    NSString *userName = @"againagain4";
     NSString *userPassword = @"password12345";
-    NSDictionary *userDict = @{@"username" : userName, @"password" : userPassword};
-    //NSLog(@"%@", userString);
     
+    NSDictionary *userDict = @{@"username" : userName, @"password" : userPassword};
+
     NSError *error = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:userDict options:0 error:&error];
     
     if (jsonData) {
-      
-      NSLog(@"user dictionary = %@", jsonData.description);
-      
-    } else {
+      //NSLog(@"user dictionary = %@", jsonData.description);
+    }
+    else {
       NSLog(@"Unable to serialize the data %@: %@", userDict, error);
     }
+    NSString *urlString = @"http://bandmates.herokuapp.com/api/user";
+    NSURL *url = [NSURL URLWithString:urlString];
     
-    NSString *urlString             = @"http://bandmates.herokuapp.com/api/user";
-    NSURL *url                      = [NSURL URLWithString:urlString];
-    
-    NSMutableURLRequest *request    = [[NSMutableURLRequest alloc] initWithURL:url];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:jsonData];
     
-    NSURLSession *session           = [NSURLSession sharedSession];
-    
-    NSURLSessionTask *dataTask      = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-      
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
       if (error) {
-        NSLog(@"could not connet %@",error.description);
+        NSLog(@"could not connect %@",error.description);
         completionHandler(nil,@"Could not connect because %@");
-      } else {
-        
+      }
+      else {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        NSInteger statusCode            = httpResponse.statusCode;
-        NSLog(@"the status code for post was %lu", statusCode);
-        NSLog(@"the responce was %@", httpResponse.description);
+        NSInteger statusCode = httpResponse.statusCode;
+        //NSLog(@"the status code for post was %lu", statusCode);
+        //NSLog(@"the response was %@", httpResponse.description);
+        [[User sharedUser] createUserFromJSON:data];
+
+        //print into human readable terms:
+        NSString *aString  = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"\n\n\n\n here's yer data: %@\n\n\n\n", aString);
         switch (statusCode) {
             
           case 200 ... 299: {
-            
-            //           NSLog(@"the status code was %ld",(long)statusCode);
-            //
-            //NSData* tokenData = [NSJSONSerialization dataWithJSONObject:data options:0 error:&error];
-            //            NSLog(@"%@",tokenDict);
             break;
-          }//case 200..299
+          }
           default:
             NSLog(@"%ld",(long)statusCode);
             break;
-        }//switch
-      }//if else
-    }];//data task
+        }
+      }
+    }];//dataTask
     [dataTask resume];
-    //
   }
-  
-//  NSDictionary* headers = @{@"accept": @"application/json"};
-//  NSDictionary* parameters = @{@"parameter": @"value", @"foo": @"bar"};
-//  
-//  NSHTTPURLResponse *response = [[UNIRest post:^(UNISimpleRequest *request) {
-//    [request setUrl:@"http://httpbin.org/post"];
-//    [request setHeaders:headers];
-//    [request setParameters:parameters];
-//  }] asJson];
-//  
-//  NSString *userName = @"BobLobLaw";
-//  NSString *userPassword = @"password12345";
-//  NSDictionary *dict = @{@"username" : userName, @"password" : userPassword};
-//  
-//  NSLog(dict);
-//  
-//  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
-//  NSString *databaseURLString = @"http://bandmates.herokuapp.com/api/user";
-//  NSURL *url = [NSURL URLWithString:databaseURLString];
-//  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-//  [request setHTTPMethod:@"POST"];
-//  // ?!
-//  NSString *contentLengthString = [NSString stringWithFormat:@"%lu", (unsigned long) [jsonData length]];
-//  [request setValue:contentLengthString forHTTPHeaderField:@"Content-Length"];
-//  //[request setValue:contentLengthString forHTTPHeaderField: @"Accept"];
-//  [request setValue:@"application/json" forHTTPHeaderField: @"Content-Type"];
-//  [request setHTTPBody: jsonData];
-//  
-//  NSLog(jsonData);
-//  
-//  NSURLSessionDataTask *dataRequest = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//    if ([response isKindOfClass: [NSHTTPURLResponse class]]) {
-//      NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) response;
-//      NSLog(@"status code is %ld",(long)[httpResponse statusCode]);
-//      if ([httpResponse statusCode] >= 200 && [httpResponse statusCode] <= 204 ) {
-//        NSLog(@"status code 200");
-//        
-//        Drink *drink = [[Drink alloc] parseJSONDataIntoDrink:data];
-//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//          success(nil, drink);
-//        }];
-//        
-//      } else {
-//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//          NSLog(@"There was an error: %@",error.localizedDescription);
-//          success(error.localizedDescription, nil);
-//        }];
-//      }
-//    }
-//  }];
-//  [dataRequest resume];
 }
 
-//- (void) fetchDrinkForSong:(NSString *)title withArtist: (NSString *) artist withCompletionHandler:(void (^)(NSString *, Drink *))success; {
-//  
-//  
-//  NSString *songTitleNoSpaces = [title stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-//  NSString *songArtistNoSpaces = [artist stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-//  NSString *api_key = @"FGSG5VYMGP92BYLA8";
-//  NSString *urlString = [NSString stringWithFormat: @"https://developer.echonest.com/api/v4/song/search?api_key=%@&artist=%@&title=%@", api_key, songArtistNoSpaces, songTitleNoSpaces];
-//  NSLog(@"%@", urlString);
-//  NSDictionary *dict = @{@"url" : urlString};
-//  NSError *error;
-//  
-//  
-//  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options: NSJSONWritingPrettyPrinted error:&error];
-//  NSString *herokuURLString = @"https://musicholic.herokuapp.com/api";
-//  NSURL *url = [NSURL URLWithString:herokuURLString];
-//  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-//  [request setHTTPMethod:@"POST"];
-//  NSString *contentLengthString = [NSString stringWithFormat:@"%lu", (unsigned long)[jsonData length]];
-//  [request setValue:contentLengthString forHTTPHeaderField: @"Content-Length"];
-//  [request setValue:contentLengthString forHTTPHeaderField: @"Accept"];
-//  [request setValue:@"application/json" forHTTPHeaderField: @"Content-Type"];
-//  [request setHTTPBody: jsonData];
-//  
-// //This part should be fairly universal: POST REQUESTS
-// NSURLSessionDataTask *dataRequest = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//    if ([response isKindOfClass: [NSHTTPURLResponse class]]) {
-//      NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) response;
-//      NSLog(@"status code is %ld",(long)[httpResponse statusCode]);
-//      if ([httpResponse statusCode] >= 200 && [httpResponse statusCode] <= 204 ) {
-//        NSLog(@"status code 200");
-//        
-//        Drink *drink = [[Drink alloc] parseJSONDataIntoDrink:data];
-//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//          success(nil, drink);
-//        }];
-//        
-//      } else {
-//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//          NSLog(@"There was an error: %@",error.localizedDescription);
-//          success(error.localizedDescription, nil);
-//        }];
-//      }
-//    }
-//  }];
-//  [dataRequest resume];
-//}
+- (NSString *) getDataFrom:(NSString *)url{
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+  [request setHTTPMethod:@"GET"];
+  [request setURL:[NSURL URLWithString:url]];
+  
+  NSError *error = [[NSError alloc] init];
+  NSHTTPURLResponse *responseCode = nil;
+  NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+  
+  if([responseCode statusCode] != 200){
+    NSLog(@"Error getting %@, HTTP status code %li", url, (long)[responseCode statusCode]);
+    return nil;
+  }
+  return [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
+}
 
 /*
 // jeff
@@ -425,13 +298,12 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
 }
 */
 
-// request token from DB
+
 
 
 // get track for tableview cell
 
 // POST to SQL : username psswd track (stack exchange search)
-// ^package data to JSON
 
 // POST request & attach JSON
 
