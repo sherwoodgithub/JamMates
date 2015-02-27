@@ -28,6 +28,9 @@
 		B8B5FD141A9F988000333381 /* ButtonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD131A9F987F00333381 /* ButtonUI.m */; };
 		B8B5FD171A9F9A6E00333381 /* commonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD161A9F9A6E00333381 /* commonUI.m */; };
 		B8B5FD191A9FADA600333381 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B5FD181A9FADA600333381 /* MessageUI.framework */; };
+		B8BC81CF1AA09EAE0056424E /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BC81CE1AA09EAE0056424E /* DraggableView.m */; };
+		B8BC81D21AA0A2FD0056424E /* DraggableViewBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BC81D11AA0A2FD0056424E /* DraggableViewBackground.m */; };
+		B8BC81D41AA0B78D0056424E /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BC81D31AA0B78D0056424E /* OverlayView.m */; };
 		B8C77BE21A9BCAF5007F86D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77BE11A9BCAF5007F86D1 /* main.m */; };
 		B8C77BE51A9BCAF5007F86D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77BE41A9BCAF5007F86D1 /* AppDelegate.m */; };
 		B8C77BE81A9BCAF5007F86D1 /* MusicianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C77BE71A9BCAF5007F86D1 /* MusicianViewController.m */; };
@@ -85,6 +88,12 @@
 		B8B5FD151A9F9A6E00333381 /* commonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commonUI.h; sourceTree = "<group>"; };
 		B8B5FD161A9F9A6E00333381 /* commonUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commonUI.m; sourceTree = "<group>"; };
 		B8B5FD181A9FADA600333381 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B8BC81CD1AA09EAE0056424E /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableView.h; sourceTree = "<group>"; };
+		B8BC81CE1AA09EAE0056424E /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableView.m; sourceTree = "<group>"; };
+		B8BC81D01AA0A2FD0056424E /* DraggableViewBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableViewBackground.h; sourceTree = "<group>"; };
+		B8BC81D11AA0A2FD0056424E /* DraggableViewBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableViewBackground.m; sourceTree = "<group>"; };
+		B8BC81D31AA0B78D0056424E /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
+		B8BC81D51AA0B7920056424E /* OverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
 		B8C77BDC1A9BCAF5007F86D1 /* JamMates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamMates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C77BE01A9BCAF5007F86D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8C77BE11A9BCAF5007F86D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -186,6 +195,12 @@
 			children = (
 				B8C77BE91A9BCAF5007F86D1 /* Main.storyboard */,
 				B8B5FCFA1A9E3E6200333381 /* SCTableViewCell.xib */,
+				B8BC81CD1AA09EAE0056424E /* DraggableView.h */,
+				B8BC81CE1AA09EAE0056424E /* DraggableView.m */,
+				B8BC81D01AA0A2FD0056424E /* DraggableViewBackground.h */,
+				B8BC81D11AA0A2FD0056424E /* DraggableViewBackground.m */,
+				B8BC81D51AA0B7920056424E /* OverlayView.h */,
+				B8BC81D31AA0B78D0056424E /* OverlayView.m */,
 				B8B5FCFC1A9E3F5100333381 /* SCTableViewCell.h */,
 				B8B5FCFD1A9E3F5100333381 /* SCTableViewCell.m */,
 				B8B5FD121A9F987F00333381 /* ButtonUI.h */,
@@ -369,6 +384,7 @@
 				B8B5FCF91A9D7DEC00333381 /* ProfileDetailSearchViewController.m in Sources */,
 				B8B5FCFE1A9E3F5100333381 /* SCTableViewCell.m in Sources */,
 				B8C77BE81A9BCAF5007F86D1 /* MusicianViewController.m in Sources */,
+				B8BC81D21AA0A2FD0056424E /* DraggableViewBackground.m in Sources */,
 				B8C77BE51A9BCAF5007F86D1 /* AppDelegate.m in Sources */,
 				B824047E1A9FBF7B0030070F /* MainViewController.m in Sources */,
 				B8B5FC691A9C202C00333381 /* ProfileViewController.m in Sources */,
@@ -380,7 +396,9 @@
 				B8B5FD0E1A9EBC1000333381 /* SearchTracksViewController.m in Sources */,
 				B8B5FC661A9C200C00333381 /* FavoritesTableViewController.m in Sources */,
 				B8C77C071A9BCB4E007F86D1 /* ArrayDataSource.m in Sources */,
+				B8BC81D41AA0B78D0056424E /* OverlayView.m in Sources */,
 				B8B5FD111A9EC05E00333381 /* TrackTableViewCell.m in Sources */,
+				B8BC81CF1AA09EAE0056424E /* DraggableView.m in Sources */,
 				B8C77BE21A9BCAF5007F86D1 /* main.m in Sources */,
 				B8B5FC6C1A9C204200333381 /* ChatViewController.m in Sources */,
 			);

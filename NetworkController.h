@@ -17,9 +17,10 @@
 +(NetworkController *) sharedNetworkController;
 //-(void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void(^)(NSData *))completionHandler;
 -(void) searchForTracksWithQuery: (NSString *) query withCompletionHandler: (void(^)(NSArray *resultArray, NSString *error)) completionHandler;
+-(void) getOtherUsers: (NSString *) SQLtoken withUserName: (NSString *)userName withCompletionHandler:(void (^)(NSArray *))completionHandler;
 -(void)requestOAuthAccess;
 -(void)handleOAuthURL: (NSURL*) callbackURL;
--(void)createUser: (void (^) (NSString *token, NSString *error)) completionHandler;
+-(void) createUser: (NSString *) userName;
 -(void)fetchSoundCloudTracks: (void(^)(NSArray *resultArray, NSString *error)) completionHandler;
 
 @end

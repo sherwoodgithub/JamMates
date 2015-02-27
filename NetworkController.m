@@ -208,14 +208,12 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
 
 #pragma mark - JavaScript Database
 #warning createUser still relies on hard-coded userName !! NOT AUTOMATIC !!
-- (void) createUser: (void (^) (NSString *token, NSString *error)) completionHandler {
+- (void) createUser: (NSString *) userName {
   
   NSString *localToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"SQLtoken"];
   if (localToken == nil) {
-    NSString *userName = @"againagain4";
-    NSString *userPassword = @"password12345";
-    
-    NSDictionary *userDict = @{@"username" : userName, @"password" : userPassword};
+
+    NSDictionary *userDict = @{@"username" : userName};
 
     NSError *error = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:userDict options:0 error:&error];
@@ -239,7 +237,6 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
       if (error) {
         NSLog(@"could not connect %@",error.description);
-        completionHandler(nil,@"Could not connect because %@");
       }
       else {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
@@ -247,10 +244,16 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
         //NSLog(@"the status code for post was %lu", statusCode);
         //NSLog(@"the response was %@", httpResponse.description);
         [[User sharedUser] createUserFromJSON:data];
+        User *user = [User sharedUser];
+        NSLog(@"%@", user.SQLtoken);
 
         //print into human readable terms:
         NSString *aString  = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"\n\n\n\n here's yer data: %@\n\n\n\n", aString);
+        NSDictionary *keyFromDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSString *token = keyFromDictionary[@"eat"];
+        [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"SQLtoken"];
+        
         switch (statusCode) {
             
           case 200 ... 299: {
@@ -265,6 +268,109 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
     [dataTask resume];
   }
 }
+
+-(void) getOtherUsers: (NSString *) SQLtoken withUserName: (NSString *)userName withCompletionHandler:(void (^)(NSArray *))completionHandler {
+  
+  NSString *localToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"SQLtoken"];
+  if (localToken != nil) {
+  NSString *urlString = @"http://bandmates.herokuapp.com/api/unseen_user";
+  NSURL *url = [NSURL URLWithString:urlString];
+    
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+  [request setHTTPMethod:@"GET"];
+  [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+  [request setValue:localToken forHTTPHeaderField:@"eat"];
+  [request setValue:userName forHTTPHeaderField:@"username"];
+  // username? password? id?
+  NSURLSession *session = [NSURLSession sharedSession];
+  NSURLSessionTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    if (error) {
+      NSLog(@"could not connect %@",error.description);
+//      completionHandler(nil,@"Could not connect because %@");
+    }
+    else {
+      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+      NSInteger statusCode = httpResponse.statusCode;
+      //NSLog(@"the status code for post was %lu", statusCode);
+      //NSLog(@"the response was %@", httpResponse.description);
+      
+      //print into human readable terms:
+      NSString *aString  = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+      NSLog(@"\n\n\n\n here's yer data: %@\n\n\n\n", aString);
+      switch (statusCode) {
+          
+        case 200 ... 299: {
+          if (data != nil) {
+//            NSMutableArray *arrayOfDicts
+            NSDictionary *otherUsersLibrary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (NSDictionary *dick in otherUsersLibrary) {
+              [array addObject:dick];
+            }
+          //  NSMutableArray *array = otherUsersLibrary[@"user"];
+            NSLog(@"%@",array);
+            completionHandler(array);
+            
+          }
+          
+          break;
+        }
+        default:
+          NSLog(@"%ld",(long)statusCode);
+          break;
+      }
+    }
+  }];//dataTask
+  [dataTask resume];
+  }
+
+}
+
+//- (void) getOtherUsers: (void (^) (NSString *token, NSString *error)) completionHandler {
+//  
+//  NSString *localToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"SQLtoken"];
+//  NSError *error = nil;
+//  //NSData *jsonData = [NSJSONSerialization dataWithJSONObject:userDict options:0 error:&error];
+//  
+//  //    if (jsonData) {
+//  //      //NSLog(@"user dictionary = %@", jsonData.description);
+//  //    }
+//  //    else {
+//  //      NSLog(@"Unable to serialize the data %@: %@", userDict, error);
+//  //    }
+//  NSString *urlString = @"http://bandmates.herokuapp.com/api/approval";
+//  NSURL *url = [NSURL URLWithString:urlString];
+//  
+//  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+//  [request setHTTPMethod:@"GET"];
+//  [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//  [request setValue:localToken forHTTPHeaderField:@"eat"];
+//  // username? password? id?
+//  NSURLSession *session = [NSURLSession sharedSession];
+//  NSURLSessionTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//    if (error) {
+//      NSLog(@"Cannot connect @ NSURLSessionTask %@",error.description);
+//      completionHandler(nil,@"Could not connect because %@");
+//    }
+//    else {
+//      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+//      NSInteger statusCode = httpResponse.statusCode;
+//      //print into human readable terms:
+//      NSString *aString  = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+//      NSLog(@"\n\n\n\n here's yer data: %@\n\n\n\n", aString);
+//      switch (statusCode) {
+//        case 200 ... 299: {
+//          break;
+//        }
+//        default:
+//          NSLog(@"%ld",(long)statusCode);
+//          break;
+//      }
+//    }
+//  }];
+//  [dataTask resume];
+//}
+
 
 - (NSString *) getDataFrom:(NSString *)url{
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];

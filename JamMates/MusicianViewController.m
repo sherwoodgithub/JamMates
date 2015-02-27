@@ -10,6 +10,8 @@
 #import "SCTableViewCell.h"
 #import "NetworkController.h"
 #import "User.h"
+#import "DraggableView.h"
+#import "DraggableViewBackground.h"
 
 #import <AVFoundation/AVFoundation.h>
 #import <MessageUI/MessageUI.h>
@@ -29,8 +31,10 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-#warning need below:
-  //MUSICIAN_CELL identifier for prepare for segue
+// 
+//  DraggableViewBackground *draggableBackground = [[DraggableViewBackground alloc]initWithFrame:CGRectMake(36, 100, 300, 300)];
+//  [self.view addSubview:draggableBackground];
+  
   if ([[NSUserDefaults standardUserDefaults]objectForKey:@"SCToken"] == nil) {
     [[NetworkController sharedNetworkController] requestOAuthAccess];
   }
@@ -42,13 +46,22 @@
   
 #warning - below token IS SAME AS SOUNDCLOUD TOKEN
 // DATABASE CREATE USER
-//  [[NetworkController sharedNetworkController] createUser:^(NSString *token, NSString *error) {
-//    NSLog(@"%@",token);
-//    NSString *DBtoken = [userDefaults stringForKey:@"SQLtoken"];
-//    NSLog(@"\n\n\n\n\n SQLtoken: %@",DBtoken);
-//
-//  }];
+  if ([[NSUserDefaults standardUserDefaults]objectForKey:@"SQLtoken"]==nil) {
+    NSString *userName = @"FUCKINGDAMMITimeandarn";
+    [[NetworkController sharedNetworkController] createUser:userName ];
+      NSLog(@"%@",token);
+      NSString *DBtoken = [userDefaults stringForKey:@"SQLtoken"];
+      NSLog(@"\n\n\n\n\n SQLtoken: %@",DBtoken);
+  }
 
+  NSString *userName = @"blackCat";
+  //[[NetworkController sharedNetworkController] getOtherUsers: DBtoken withUserName: userName];
+//  [[NetworkController sharedNetworkController] getOtherUsers: withUserName:(NSString *) {
+
+  [[NetworkController sharedNetworkController] getOtherUsers:DBtoken withUserName:userName withCompletionHandler:^(NSArray *results) {
+    NSLog(@"%@",results);
+    
+  }];
 //SOUNDCLOUD TRACKS
   [[NetworkController sharedNetworkController] fetchSoundCloudTracks:^(NSArray *resultArray, NSString *error) {
     NSString *SCtoken = [userDefaults stringForKey:@"SCToken"];
