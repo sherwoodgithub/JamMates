@@ -12,6 +12,8 @@
 
 +(NSArray *)userFromJSON:(NSData *)jsonData;
 
++(User *)sharedUser;
+
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *SCToken;
 @property (strong, nonatomic) NSString *SQLtoken;
@@ -21,8 +23,11 @@
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *phoneNumber;
 @property (strong, nonatomic) NSArray *instruments;
-@property (strong, nonatomic) NSArray *trackSamples;
+@property (strong, nonatomic) NSString *track1;
+@property (strong, nonatomic) NSString *track2;
+@property (strong, nonatomic) NSString *track3;
 @property (strong, nonatomic) NSString *avatarURL;
 @property (strong, nonatomic) UIImage *image;
+
 
 @end

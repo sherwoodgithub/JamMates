@@ -8,9 +8,10 @@
 
 #import "ProfileViewController.h"
 #import "SCTableViewCell.h"
+#import "SearchTracksViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray *tracksArray;
 @property (strong, nonatomic) NSArray *items;
@@ -75,6 +76,14 @@
   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
   
 }
+
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//  if ([segue.identifier isEqualToString:@"SEARCH_TRACKS"]) {
+//    SearchTracksViewController *destinationVC = segue.destinationViewController;
+//    destinationVC.trackTitle =
+//  }
+//}
+
 /*
 - (void)addMyButton{    // Method for creating button, with background image and other properties
   

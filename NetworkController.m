@@ -16,7 +16,8 @@
 
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSURLSessionConfiguration *configuration;
-@property (nonatomic, strong) NSString* token;
+@property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) User *user;
 
 @end
 
@@ -177,28 +178,57 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
 }
 
 //
--(NSMutableArray *) searchForTracksWithQuery: (NSString *) query {
+-(void) searchForTracksWithQuery: (NSString *) query withCompletionHandler: (void(^)(NSArray *resultArray, NSString *error)) completionHandler {
   NSString *scToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"SCToken"];
-  NSLog(@"\n\n\n\nsearchForTracksWithQuery:\n\n\n\n\n");
+ // NSLog(@"\n\n\n\nsearchForTracksWithQuery:\n\n\n\n\n");
   if(query.length >0)
     query = [query stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-  NSString *jsonString =[NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/tracks.json?oauth_token=%@&client_id=%@&q=%@",SC_API_URL,scToken,clientID,query]] encoding:NSUTF8StringEncoding error:nil];
-  NSLog(@"%@",jsonString);
-  NSMutableArray *musicArray;
-  self.scTrackResultList = [[NSMutableArray alloc]init];
   
-  NSMutableArray *returnArray = [[NSMutableArray alloc]init];
+  NSString *urlString = [NSString stringWithFormat:@"%@/tracks.json?oauth_token=%@&client_id=%@&q=%@",SC_API_URL,scToken,clientID,query];
   
-  for(int i=0; i< musicArray.count;i++)
-  {
-    NSMutableDictionary *result = [musicArray objectAtIndex:i];
-    if([[result objectForKey:@"kind" ] isEqualToString:@"track"])
-    {
-      [returnArray addObject:result];
+  NSURL *url = [[NSURL alloc] initWithString:urlString];
+  
+  NSMutableURLRequest* request = [[NSMutableURLRequest alloc]initWithURL:url];
+  request.HTTPMethod = @"GET";
+  
+  NSURLSessionDataTask *dataTask = [[self session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSHTTPURLResponse *callResponse = (NSHTTPURLResponse *)response;
+    
+    if ([callResponse isKindOfClass:[NSHTTPURLResponse class]]) {
+      NSInteger responseCode = [callResponse statusCode];
+      
+      if (responseCode >= 200 && responseCode <= 299) {
+        NSLog(@"FAVORITED 200");
+        NSArray* resultArray = [Track parseJSONData:data];
+        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+          completionHandler(resultArray, nil);
+        }];
+      }else{
+        NSLog(@"%ld", (long)responseCode);
+      }
     }
-  }
-  return returnArray;
+  }];
+  [dataTask resume];
 }
+
+  
+  //NSLog(@"%@",jsonString);
+//  NSMutableArray *musicArray;
+//  self.scTrackResultList = [[NSMutableArray alloc]init];
+//  
+//  NSMutableArray *returnArray = [[NSMutableArray alloc]init];
+//  
+//  for(int i=0; i< musicArray.count;i++)
+//  {
+//    NSMutableDictionary *result = [musicArray objectAtIndex:i];
+//    if([[result objectForKey:@"kind" ] isEqualToString:@"track"])
+//    {
+//      [returnArray addObject:result];
+//    }
+//  }
+ // NSLog(musicArray);
+//  return returnArray;
+
 /*
 -(void)fetchUserImage:(NSString *)avatarURL completionHandler:(void (^) (UIImage *image))completionHandler {
   
@@ -277,9 +307,9 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
   }];
 }
 */
+
 // request token from DB
 
-// fetchTracks SC
 
 // get track for tableview cell
 
@@ -290,7 +320,7 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
 
 // pull request for users's favorites
 
-// pull request for photos url?
+// SC avatar image
 
 
 

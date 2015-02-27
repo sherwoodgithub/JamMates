@@ -15,7 +15,7 @@
 +(NetworkController *) sharedNetworkController;
 +(void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void(^)(NSData *))completionHandler;
 
--(NSMutableArray *) searchForTracksWithQuery: (NSString *) query;
+-(void) searchForTracksWithQuery: (NSString *) query withCompletionHandler: (void(^)(NSArray *resultArray, NSString *error)) completionHandler;
 -(void)requestOAuthAccess;
 -(void)handleOAuthURL: (NSURL*) callbackURL;
 

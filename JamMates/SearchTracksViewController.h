@@ -10,4 +10,7 @@
 
 @interface SearchTracksViewController : UIViewController
 
+@property (strong, nonatomic) NSString *trackTitle;
+@property (strong, nonatomic) NSString *trackURL;
+
 @end

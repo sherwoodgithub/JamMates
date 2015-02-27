@@ -13,8 +13,7 @@
 @property (strong, nonatomic) NSString* title;
 @property (strong, nonatomic) NSString* stream_url;
 
-
 +(NSMutableArray *) parseJSONData: (NSData *) JSONData;
-+(NSArray *)questionsFromJSON:(NSData *)jsonData;
++(NSArray *)tracksFromJSON:(NSData *)jsonData;
 
 @end

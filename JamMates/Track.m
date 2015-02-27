@@ -28,15 +28,15 @@
   
   NSArray *JSONArray= [NSJSONSerialization JSONObjectWithData:JSONData options:0 error: &error];
   if ([JSONArray isKindOfClass:[NSArray class]]) {
-    for (NSDictionary* trackDic in JSONArray) {
-      Track* trackObject = [[Track alloc]initDictionary:trackDic];
+    for (NSDictionary *trackDictionary in JSONArray) {
+      Track *trackObject = [[Track alloc]initDictionary: trackDictionary];
       [trackArray addObject:trackObject];
     }
   }
   return trackArray;
 }
-/*
-+(NSArray *)questionsFromJSON:(NSData *)jsonData {
+
++(NSArray *)tracksFromJSON:(NSData *)jsonData {
   
   NSError *error;
   NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
@@ -44,19 +44,17 @@
     
     NSLog(@"%@",error.localizedDescription);
     return nil;
-  }//if error
-  NSArray *items               = [jsonDictionary objectForKey:@"items"];
-  NSMutableArray *temp         = [[NSMutableArray alloc] init];
+  }
+  NSArray *items = [jsonDictionary objectForKey:@"items"];
+  NSMutableArray *temp = [[NSMutableArray alloc] init];
   for (NSDictionary *item in items) {
-    
-    Track *question           = [[Track alloc] init];
-    Track.title               = item[@"title"];
-    NSDictionary *userInfo       = item[@"owner"];
-    question.avatarURL           = userInfo[@"profile_image"];
-    [temp addObject:question];
-  }//for item in items
-  NSArray *final               = [[NSArray alloc] initWithArray:temp];
+    Track *track = [[Track alloc] init];
+    track.title = item[@"title"];
+    track.stream_url = item[@"stream_url"];
+    [temp addObject:track];
+  }
+  NSArray *final = [[NSArray alloc] initWithArray:temp];
   return final;
-}//questions from json
-*/
+}
+
 @end

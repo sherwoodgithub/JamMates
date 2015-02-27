@@ -8,7 +8,7 @@
 
 #import "QuestionTableViewCell.h"
 
-@implementation QuestionTableViewCell
+@implementation TrackTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code

@@ -1,5 +1,5 @@
 //
-//  MessageTableViewController.h
+//  MainViewController.h
 //  JamMates
 //
 //  Created by Stephen Sherwood on 2/26/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessageTableViewController : UITableViewController
+@interface MainViewController : UIViewController
 
 @end

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QuestionTableViewCell : UITableViewCell
+@interface TrackTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UITextView *titleTextView;
+@property (weak, nonatomic) IBOutlet UITextView *titleText;
 
 @end

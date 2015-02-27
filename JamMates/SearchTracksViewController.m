@@ -8,12 +8,14 @@
 #import "SearchTracksViewController.h"
 #import "NetworkController.h"
 #import "User.h"
+#import "Track.h"
 #import "QuestionTableViewCell.h"
 
 @interface SearchTracksViewController () <UISearchBarDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong,nonatomic) NSArray *tracks;
+@property (strong, nonatomic) Track *track;
 
 @end
 
@@ -29,18 +31,15 @@
 
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-  [[NetworkController sharedNetworkController] searchForTracksWithQuery:searchBar.text];
-  
-//  [[NetworkController sharedNetworkController] fetchQuestionsWithSearchTerm:searchBar.text completionHandler:^(NSArray *results, NSString *error) {
-//    
-//    self.questions = results;
-//    if (error) {
-//      
-//      UIAlertView *networkIssueAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:error delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-//      [networkIssueAlert show];
-//    }
-//    [self.tableView reloadData];
-//  }];
+  [[NetworkController sharedNetworkController] searchForTracksWithQuery:searchBar.text withCompletionHandler:^(NSArray *resultArray, NSString *error) {
+    self.tracks = resultArray;
+    if (error) {
+      
+      UIAlertView *networkIssueAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:error delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+      [networkIssueAlert show];
+    }
+    [self.tableView reloadData];
+  }];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -48,23 +47,16 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   QuestionTableViewCell *cell             = [tableView dequeueReusableCellWithIdentifier:@"QUESTION_CELL"forIndexPath:indexPath];
- // cell.avatarImageView.image     = nil;
- // Quest *question             = self.questions[indexPath.row];
- // cell.titleTextView.text        = question.title;
+  TrackTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QUESTION_CELL"forIndexPath:indexPath];
   
-//  if (!question.image) {
-//    
-//    [[NetworkController sharedNetworkController] fetchUserImage:question.avatarURL completionHandler:^(UIImage *image) {
-//      
-//      question.image                 = image;
-//      cell.avatarImageView.image     = image;
-//    }];
-//  } else {
-//    
-//    cell.avatarImageView.image     = question.image;
-//  }//if else
+  Track *track = self.tracks[indexPath.row];
+  cell.titleText.text = track.title;
   return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+}
+
 @end
 

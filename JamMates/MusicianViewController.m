@@ -85,7 +85,7 @@
 
 }
 
-#warning mark - needs parameter for current user phone# & email
+#warning mark - needs parameter for viewed musician phone#
 - (void)showSMS {
   
   if(![MFMessageComposeViewController canSendText]) {
@@ -95,7 +95,7 @@
   }
 #warning mark - wrong recipient
   NSArray *recipient = @[@"2106026818",@"5754188175",@"7753387095"];
-  NSString *message = [NSString stringWithFormat:@"\n\n\n\n\nSent from JamMates"];
+  NSString *message = [NSString stringWithFormat:@""];
   
   MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
   messageController.messageComposeDelegate = self;
@@ -109,21 +109,17 @@
   switch (result) {
     case MessageComposeResultCancelled:
       break;
-      
     case MessageComposeResultFailed:
     {
       UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
       [warningAlert show];
       break;
     }
-      
     case MessageComposeResultSent:
       break;
-      
     default:
       break;
   }
-  
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -140,6 +136,6 @@
 }
 
 - (IBAction)emailButtonPressed:(id)sender {
-  //[self]
+  
 }
 @end
