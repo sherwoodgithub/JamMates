@@ -19,6 +19,10 @@
   return sharedUser;
 }
 
+-(void)updateTracks:(NSString *)trackName {
+  //
+}
+
 -(void)createUserFromJSON:(NSData *)jsonData {
   NSError *error;
   NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];

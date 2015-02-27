@@ -15,11 +15,12 @@
 @property (strong, nonatomic)  NSMutableArray *scTrackResultList; //*
 
 +(NetworkController *) sharedNetworkController;
-+(void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void(^)(NSData *))completionHandler;
+//-(void)downloadDataFromURL:(NSURL *)url withCompletionHandler:(void(^)(NSData *))completionHandler;
 -(void) searchForTracksWithQuery: (NSString *) query withCompletionHandler: (void(^)(NSArray *resultArray, NSString *error)) completionHandler;
 -(void)requestOAuthAccess;
 -(void)handleOAuthURL: (NSURL*) callbackURL;
 -(void)createUser: (void (^) (NSString *token, NSString *error)) completionHandler;
+-(void)fetchSoundCloudTracks: (void(^)(NSArray *resultArray, NSString *error)) completionHandler;
 
 @end
 

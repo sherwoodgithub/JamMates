@@ -9,7 +9,7 @@
 #import "NetworkController.h"
 #import "User.h"
 #import "Track.h"
-#import "QuestionTableViewCell.h"
+#import "TrackTableViewCell.h"
 
 @interface SearchTracksViewController () <UISearchBarDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -52,6 +52,15 @@
   Track *track = self.tracks[indexPath.row];
   cell.titleText.text = track.title;
   return cell;
+  
+//  TrackTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QUESTION_CELL"forIndexPath:indexPath];
+//  User *user = [User sharedUser];
+//  
+//  user.track1 =
+//  
+//  Track *track = self.tracks[indexPath.row];
+//  cell.titleText.text = track.title;
+//  return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

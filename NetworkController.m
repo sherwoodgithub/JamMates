@@ -143,7 +143,7 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
 // Tuan
 -(void)fetchSoundCloudTracks: (void(^)(NSArray *resultArray, NSString *error)) completionHandler; {
   NSLog(@"\n\n\n\nfetchSoundCloudTracks\n\n\n\n");
-  NSString *accessToken = [[NSUserDefaults standardUserDefaults]valueForKey:@"OAuthToken"];
+  NSString *accessToken = [[NSUserDefaults standardUserDefaults]valueForKey:@"SCToken"];
   
   NSString* urlString = [NSString stringWithFormat:@"https://api.soundcloud.com/users/80502172/favorites.json?oauth_token=%@", accessToken];
   
@@ -159,7 +159,7 @@ NSString* token_url = @"https://api.soundcloud.com/oauth2/token";
       NSInteger responseCode = [callResponse statusCode];
       
       if (responseCode >= 200 && responseCode <= 299) {
-        NSLog(@"FAVORITED 200");
+        //NSLog(@"FAVORITED 200");
         NSArray* resultArray = [Track parseJSONData:data];
         [[NSOperationQueue mainQueue]addOperationWithBlock:^{
           completionHandler(resultArray, nil);

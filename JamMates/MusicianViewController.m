@@ -49,8 +49,15 @@
 //
 //  }];
 
+//SOUNDCLOUD TRACKS
+  [[NetworkController sharedNetworkController] fetchSoundCloudTracks:^(NSArray *resultArray, NSString *error) {
+    NSString *SCtoken = [userDefaults stringForKey:@"SCToken"];
+    //NSLog(@"%@",SCtoken);
+    NSLog(@"%@",resultArray);
+  }];
+
   
-//Audio Track
+//Local Audio Track
   NSString *path = [NSString stringWithFormat:@"%@/200.mp3",[[NSBundle mainBundle] resourcePath]];
   NSURL *soundURL = [NSURL fileURLWithPath:path];
   _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];

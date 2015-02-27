@@ -24,7 +24,7 @@
 		B8B5FD051A9E588100333381 /* 200.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8B5FD041A9E588100333381 /* 200.mp3 */; };
 		B8B5FD0B1A9E76D100333381 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD0A1A9E76D100333381 /* Track.m */; };
 		B8B5FD0E1A9EBC1000333381 /* SearchTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD0D1A9EBC1000333381 /* SearchTracksViewController.m */; };
-		B8B5FD111A9EC05E00333381 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD101A9EC05E00333381 /* QuestionTableViewCell.m */; };
+		B8B5FD111A9EC05E00333381 /* TrackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD101A9EC05E00333381 /* TrackTableViewCell.m */; };
 		B8B5FD141A9F988000333381 /* ButtonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD131A9F987F00333381 /* ButtonUI.m */; };
 		B8B5FD171A9F9A6E00333381 /* commonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B5FD161A9F9A6E00333381 /* commonUI.m */; };
 		B8B5FD191A9FADA600333381 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B5FD181A9FADA600333381 /* MessageUI.framework */; };
@@ -78,8 +78,8 @@
 		B8B5FD0A1A9E76D100333381 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		B8B5FD0C1A9EBC1000333381 /* SearchTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTracksViewController.h; sourceTree = "<group>"; };
 		B8B5FD0D1A9EBC1000333381 /* SearchTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTracksViewController.m; sourceTree = "<group>"; };
-		B8B5FD0F1A9EC05E00333381 /* QuestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTableViewCell.h; sourceTree = "<group>"; };
-		B8B5FD101A9EC05E00333381 /* QuestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTableViewCell.m; sourceTree = "<group>"; };
+		B8B5FD0F1A9EC05E00333381 /* TrackTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackTableViewCell.h; sourceTree = "<group>"; };
+		B8B5FD101A9EC05E00333381 /* TrackTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackTableViewCell.m; sourceTree = "<group>"; };
 		B8B5FD121A9F987F00333381 /* ButtonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonUI.h; sourceTree = "<group>"; };
 		B8B5FD131A9F987F00333381 /* ButtonUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonUI.m; sourceTree = "<group>"; };
 		B8B5FD151A9F9A6E00333381 /* commonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commonUI.h; sourceTree = "<group>"; };
@@ -175,8 +175,8 @@
 				B8B5FC621A9C1F6E00333381 /* User.m */,
 				B8B5FD091A9E76D100333381 /* Track.h */,
 				B8B5FD0A1A9E76D100333381 /* Track.m */,
-				B8B5FD0F1A9EC05E00333381 /* QuestionTableViewCell.h */,
-				B8B5FD101A9EC05E00333381 /* QuestionTableViewCell.m */,
+				B8B5FD0F1A9EC05E00333381 /* TrackTableViewCell.h */,
+				B8B5FD101A9EC05E00333381 /* TrackTableViewCell.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -380,7 +380,7 @@
 				B8B5FD0E1A9EBC1000333381 /* SearchTracksViewController.m in Sources */,
 				B8B5FC661A9C200C00333381 /* FavoritesTableViewController.m in Sources */,
 				B8C77C071A9BCB4E007F86D1 /* ArrayDataSource.m in Sources */,
-				B8B5FD111A9EC05E00333381 /* QuestionTableViewCell.m in Sources */,
+				B8B5FD111A9EC05E00333381 /* TrackTableViewCell.m in Sources */,
 				B8C77BE21A9BCAF5007F86D1 /* main.m in Sources */,
 				B8B5FC6C1A9C204200333381 /* ChatViewController.m in Sources */,
 			);
