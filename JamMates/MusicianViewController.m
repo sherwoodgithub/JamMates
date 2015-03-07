@@ -32,8 +32,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 // 
-//  DraggableViewBackground *draggableBackground = [[DraggableViewBackground alloc]initWithFrame:CGRectMake(36, 100, 300, 300)];
-//  [self.view addSubview:draggableBackground];
+  DraggableViewBackground *draggableBackground = [[DraggableViewBackground alloc]initWithFrame:CGRectMake(36, 100, 300, 300)];
+  [self.view addSubview:draggableBackground];
   
   if ([[NSUserDefaults standardUserDefaults]objectForKey:@"SCToken"] == nil) {
     [[NetworkController sharedNetworkController] requestOAuthAccess];
